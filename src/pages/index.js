@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
+import Image from 'gatsby-image'
 
 const HeroWrapper = styled.div`
   width: 600px;
@@ -20,13 +21,14 @@ const InfoBoxWrapper = styled.div`
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
+  z-index: 1;
 
   h2 {
     font-size: 45px;
   }
 `
 
-const Image = styled.img`
+const StyledImage = styled(Image)`
   width: 100%;
 `
 
@@ -38,7 +40,6 @@ const Button = styled.button`
   border: 2px solid #000;
   font-size: 13px;
   letter-spacing: 2px;
-  z-index: 1;
 `
 
 const IndexPage = ({ data }) => (
@@ -47,10 +48,8 @@ const IndexPage = ({ data }) => (
       <h2>Tattoo artist</h2>
       <Button>estimate project</Button>
     </InfoBoxWrapper>
-    <Image
-      src={data.file.childImageSharp.fluid.src}
-      srcSet={data.file.childImageSharp.fluid.srcSet}
-      sizes={data.file.childImageSharp.fluid.sizes}
+    <StyledImage
+      fluid={data.file.childImageSharp.fluid}
       alt="Hero"
     />
   </HeroWrapper>
@@ -61,9 +60,7 @@ export const query = graphql`
     file(name: {eq: "hero"}) {
       childImageSharp {
         fluid(maxWidth: 600, quality: 100) {
-          src
-          srcSet
-          sizes
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }
