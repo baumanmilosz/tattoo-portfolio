@@ -13,6 +13,7 @@ html {
 }
 
 body {
+  min-height: 100vh;
   padding: 25px 60px 0;
   font-family: 'Montserrat';
 }
@@ -22,6 +23,8 @@ ul {
 }
 
 button {
+  background: none;
+  border: none;
   cursor: pointer;
 }
 `
