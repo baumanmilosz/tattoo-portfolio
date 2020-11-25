@@ -12,6 +12,7 @@ const HeroWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 100;
 `
 
 const InfoBoxWrapper = styled.div`
@@ -21,7 +22,7 @@ const InfoBoxWrapper = styled.div`
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
-  z-index: 1;
+  z-index: 200;
 
   h2 {
     font-size: 45px;
@@ -43,16 +44,18 @@ const Button = styled.button`
 `
 
 const IndexPage = ({ data }) => (
-  <HeroWrapper>
-    <InfoBoxWrapper>
-      <h2>Tattoo artist</h2>
-      <Button>estimate project</Button>
-    </InfoBoxWrapper>
-    <StyledImage
-      fluid={data.file.childImageSharp.fluid}
-      alt="Hero"
-    />
-  </HeroWrapper>
+  <>
+    <HeroWrapper>
+      <InfoBoxWrapper>
+        <h2>Tattoo artist</h2>
+        <Button>estimate project</Button>
+      </InfoBoxWrapper>
+      <StyledImage
+        fluid={data.file.childImageSharp.fluid}
+        alt="Hero"
+      />
+    </HeroWrapper>
+  </>
 )
 
 export const query = graphql`

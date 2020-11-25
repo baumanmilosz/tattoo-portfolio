@@ -1,8 +1,9 @@
 import React from "react"
+import PageDescriptionBox from "../components/PageDescriptionBox/PageDescriptionBox"
 
 const AboutPage = () => (
   <>
-    <h1>About page</h1>
+   <PageDescriptionBox title="About"/>
   </>
 )
 

@@ -6,6 +6,7 @@ import { RouterPaths } from "../../constans/RouterPaths"
 const NavigationWrapper = styled.div`
   display: flex;
   align-items: center;
+  z-index: 300;
     a {
     text-decoration: none;
     color: inherit;
@@ -33,12 +34,12 @@ const NavigationListItem = styled.li`
 
 const NavigationListItems = [
   {
-    name: `articles`,
-    path: RouterPaths.ARTICLES
-  },
-  {
     name: `about`,
     path: RouterPaths.ABOUT
+  },
+  {
+    name: `articles`,
+    path: RouterPaths.ARTICLES
   },
   {
     name: `gallery`,
@@ -53,7 +54,7 @@ const NavigationListItems = [
 const Navigation = () => {
   return (
     <NavigationWrapper>
-      <Link to={RouterPaths.HOME}><PageLogo>MBauman</PageLogo></Link>
+      <Link to={RouterPaths.HOME}><PageLogo>APiejak</PageLogo></Link>
     <NavigationList>
       {NavigationListItems.map(({ name, path }) => (
         <NavigationListItem key={path}>
