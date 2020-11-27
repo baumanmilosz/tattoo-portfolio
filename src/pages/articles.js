@@ -4,6 +4,7 @@ import PageDescriptionBox from "../components/PageDescriptionBox/PageDescription
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 import {Link} from 'gatsby'
+import slugify from "slugify"
 
 const StyledImage = styled(Image)`
   width: 300px;
@@ -12,13 +13,11 @@ const StyledImage = styled(Image)`
 const ArticlesPage = ({data}) => (
   <>
     <PageDescriptionBox title="Articles"/>
-    {data.allMdx.nodes.map(item => {
+    {data.allDatoCmsArticle.nodes.map(({heading, content, image}) => {
       return (
-        <Link to={`/articles/${item.frontmatter.slug}`}>
-          <h3>{item.frontmatter.title}</h3>
-          <p>{item.frontmatter.author}</p>
-          <p>{item.frontmatter.excerpt}</p>
-          <StyledImage fluid={item.frontmatter.postThumbnail.childImageSharp.fluid} alt="Thumbnail"/>
+        <Link to={`/articles/${slugify(heading, {lower: true })}`}>
+          <h3>{heading}</h3>
+          <StyledImage fluid={image.fluid} alt="Thumbnail"/>
         </Link>
       )
     })}
@@ -26,28 +25,19 @@ const ArticlesPage = ({data}) => (
 )
 
 export const query = graphql`
-  {
-    allMdx(filter: {fileAbsolutePath: {regex: "/articles/"}}) {
+  query allDatoCmsArticle {
+    allDatoCmsArticle {
       nodes {
-        frontmatter {
-          title
-          slug
-          author
-          postThumbnail {
-            childImageSharp {
-              fluid(maxWidth: 300, quality: 100) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
+        heading
+        content
+        image {
+          fluid(maxWidth: 300) {
+            ...GatsbyDatoCmsFluid_tracedSVG
           }
-          
         }
-        excerpt(pruneLength: 10)
       }
     }
-  }
-
-
+}
 `
 
 export default ArticlesPage
