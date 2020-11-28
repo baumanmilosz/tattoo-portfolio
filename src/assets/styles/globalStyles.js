@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -13,9 +13,8 @@ html {
 }
 
 body {
-font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   min-height: 100vh;
-  padding: 25px 60px 0;
 }
 
 ul {
@@ -27,6 +26,6 @@ button {
   border: none;
   cursor: pointer;
 }
-`
+`;
 
 export default GlobalStyle;

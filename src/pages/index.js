@@ -46,23 +46,26 @@ const StyledLink = styled(Link)`
   font-weight: 600;
 `
 
-const IndexPage = ({ data }) => (
-  <>
-    <HeroWrapper>
-      <InfoBoxWrapper>
-        <h2>Tattoo artist</h2>
-        <StyledLink to={RouterPaths.GALLERY}>show projects</StyledLink>
-      </InfoBoxWrapper>
-      <StyledImage
-        fluid={data.file.childImageSharp.fluid}
-        alt="Hero"
-      />
-    </HeroWrapper>
-  </>
-)
+const IndexPage = ({ data }) => {
+  return (
+    <>
+      <HeroWrapper>
+        {console.log(data)}
+        <InfoBoxWrapper>
+          <h2>Tattoo artist</h2>
+          <StyledLink to={RouterPaths.GALLERY}>show projects</StyledLink>
+        </InfoBoxWrapper>
+        <StyledImage
+          fluid={data.file.childImageSharp.fluid}
+          alt="Hero"
+        />
+      </HeroWrapper>
+    </>
+  )
+}
 
 export const query = graphql`
-  {
+   {
     file(name: {eq: "hero"}) {
       childImageSharp {
         fluid(maxWidth: 600, quality: 100) {

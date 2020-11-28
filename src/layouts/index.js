@@ -10,6 +10,7 @@ const Index = ({ children }) => {
     width: 1200px;
     min-height: 100vh;
     margin: 0 auto;
+    padding: 30px;
 `
   return (
     <Wrapper>

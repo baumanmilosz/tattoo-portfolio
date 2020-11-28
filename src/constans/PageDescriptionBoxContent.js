@@ -7,7 +7,7 @@ export const PageDescriptionBoxContent = {
   GALLERY_PAGE: {
     title: 'gallery',
     description:
-      'Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.',
+      "I have great respect for the past. If you don't know where you've come from, you don't know where you're going. I have respect for the past, but I'm a person of the moment. I'm here, and I do my best to be completely centered at the place I'm at, then I go forward to the next place.",
   },
   CONTACT_PAGE: {
     title: 'contact',
@@ -17,6 +17,6 @@ export const PageDescriptionBoxContent = {
   ARTICLES_PAGE: {
     title: 'articles',
     description:
-      "I have great respect for the past. If you don't know where you've come from, you don't know where you're going. I have respect for the past, but I'm a person of the moment. I'm here, and I do my best to be completely centered at the place I'm at, then I go forward to the next place.",
-  },
+      'Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.',
+  }
 };

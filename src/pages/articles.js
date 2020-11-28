@@ -1,34 +1,41 @@
-import React from "react"
-import {graphql} from "gatsby"
-import PageDescriptionBox from "../components/PageDescriptionBox/PageDescriptionBox"
-import Image from 'gatsby-image'
-import styled from 'styled-components'
-import {Link} from 'gatsby'
-import slugify from "slugify"
+import React from 'react';
+import { graphql } from 'gatsby';
+import PageDescriptionBox from '../components/PageDescriptionBox/PageDescriptionBox';
 import { PageDescriptionBoxContent } from '../constans/PageDescriptionBoxContent';
+import ArticleItem from '../components/ArticleItem/ArticleItem';
+import styled from 'styled-components';
 
-const StyledImage = styled(Image)`
-  width: 300px;
-`
+const ArticlesWrapper = styled.div`
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px
+`;
 
 const {
   title,
   description,
 } = PageDescriptionBoxContent.ARTICLES_PAGE;
 
-const ArticlesPage = ({data}) => (
+const ArticlesPage = ({ data }) => (
   <>
-    <PageDescriptionBox title={title} description={description}/>
-    {data.allDatoCmsArticle.nodes.map(({heading, content, image}) => {
-      return (
-        <Link to={`/articles/${slugify(heading, {lower: true })}`}>
-          <h3>{heading}</h3>
-          <StyledImage fluid={image.fluid} alt="Thumbnail"/>
-        </Link>
-      )
-    })}
+    <PageDescriptionBox
+      title={title}
+      description={description}
+    />
+    <ArticlesWrapper>
+      {data.allDatoCmsArticle.nodes.map(
+        ({ heading, image }) => {
+          return (
+            <ArticleItem
+              heading={heading}
+              image={image}
+            />
+          );
+        },
+      )}
+    </ArticlesWrapper>
   </>
-)
+);
 
 export const query = graphql`
   query allDatoCmsArticle {
@@ -43,7 +50,7 @@ export const query = graphql`
         }
       }
     }
-}
-`
+  }
+`;
 
-export default ArticlesPage
+export default ArticlesPage;
