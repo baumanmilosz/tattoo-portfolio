@@ -2,6 +2,7 @@ import React from "react"
 import PageDescriptionBox from "../components/PageDescriptionBox/PageDescriptionBox"
 import Image from 'gatsby-image'
 import styled from 'styled-components'
+import { PageDescriptionBoxContent } from '../constans/PageDescriptionBoxContent';
 
 const Wrapper = styled.div`
   width: 900px;
@@ -19,16 +20,22 @@ const GalleryImage = styled(Image)`
   width: 300px;
 `
 
+const {
+  title,
+  description,
+} = PageDescriptionBoxContent.GALLERY_PAGE;
+
 const GalleryPage = ({data: {allMdx: {nodes}}}) => (
+  <>
+  <PageDescriptionBox title={title} description={description}/>
   <Wrapper>
-    {console.log(nodes)}
-    <PageDescriptionBox title="Gallery"/>
-    <GalleryWrapper>
-      {nodes.map(({frontmatter}) => (
-        <GalleryImage fluid={frontmatter.galleryThumbnail.childImageSharp.fluid}/>
-      ))}
-    </GalleryWrapper>
-  </Wrapper>
+  <GalleryWrapper>
+  {nodes.map(({frontmatter}) => (
+      <GalleryImage fluid={frontmatter.galleryThumbnail.childImageSharp.fluid}/>
+    ))}
+</GalleryWrapper>
+</Wrapper>
+</>
 )
 
 export const query = graphql`

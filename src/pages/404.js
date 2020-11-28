@@ -1,9 +1,7 @@
-import React from "react"
+import React from 'react';
+import { Redirect } from '@reach/router';
+import { RouterPaths } from '../constans/RouterPaths';
 
-const NotFoundPage = () => (
-  <>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </>
-)
+const NotFoundPage = () => <Redirect to={RouterPaths.HOME} />;
 
-export default NotFoundPage
+export default NotFoundPage;

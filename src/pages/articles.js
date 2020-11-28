@@ -5,14 +5,20 @@ import Image from 'gatsby-image'
 import styled from 'styled-components'
 import {Link} from 'gatsby'
 import slugify from "slugify"
+import { PageDescriptionBoxContent } from '../constans/PageDescriptionBoxContent';
 
 const StyledImage = styled(Image)`
   width: 300px;
 `
 
+const {
+  title,
+  description,
+} = PageDescriptionBoxContent.ARTICLES_PAGE;
+
 const ArticlesPage = ({data}) => (
   <>
-    <PageDescriptionBox title="Articles"/>
+    <PageDescriptionBox title={title} description={description}/>
     {data.allDatoCmsArticle.nodes.map(({heading, content, image}) => {
       return (
         <Link to={`/articles/${slugify(heading, {lower: true })}`}>
