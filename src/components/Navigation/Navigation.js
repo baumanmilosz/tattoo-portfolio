@@ -6,7 +6,9 @@ import { RouterPaths } from "../../constans/RouterPaths"
 const NavigationWrapper = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 100px;
   z-index: 300;
+ 
     a {
     text-decoration: none;
     color: inherit;

@@ -6,7 +6,9 @@ import styled from 'styled-components'
 const Index = ({ children }) => {
 
   const Wrapper = styled.div`
+    position: relative;
     width: 1200px;
+    min-height: 100vh;
     margin: 0 auto;
 `
   return (

@@ -1,7 +1,8 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Image from 'gatsby-image'
+import { RouterPaths } from "../constans/RouterPaths"
 
 const HeroWrapper = styled.div`
   width: 600px;
@@ -33,7 +34,7 @@ const StyledImage = styled(Image)`
   width: 100%;
 `
 
-const Button = styled.button`
+const StyledLink = styled(Link)`
   align-self: flex-end;
   padding: 10px 15px;
   background: #000;
@@ -41,6 +42,8 @@ const Button = styled.button`
   border: 2px solid #000;
   font-size: 13px;
   letter-spacing: 2px;
+  text-decoration: none;
+  font-weight: 600;
 `
 
 const IndexPage = ({ data }) => (
@@ -48,7 +51,7 @@ const IndexPage = ({ data }) => (
     <HeroWrapper>
       <InfoBoxWrapper>
         <h2>Tattoo artist</h2>
-        <Button>estimate project</Button>
+        <StyledLink to={RouterPaths.GALLERY}>show projects</StyledLink>
       </InfoBoxWrapper>
       <StyledImage
         fluid={data.file.childImageSharp.fluid}
