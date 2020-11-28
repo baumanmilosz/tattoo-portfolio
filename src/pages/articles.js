@@ -24,9 +24,10 @@ const ArticlesPage = ({ data }) => (
     />
     <ArticlesWrapper>
       {data.allDatoCmsArticle.nodes.map(
-        ({ heading, image }) => {
+        ({ id, heading, image }) => {
           return (
             <ArticleItem
+              key={id}
               heading={heading}
               image={image}
             />
@@ -41,6 +42,7 @@ export const query = graphql`
   query allDatoCmsArticle {
     allDatoCmsArticle {
       nodes {
+        id
         heading
         content
         image {

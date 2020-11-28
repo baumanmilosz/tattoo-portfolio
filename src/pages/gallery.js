@@ -36,7 +36,7 @@ const GalleryPage = ({data}) => (
       <GalleryWrapper>
         {data.allDatoCmsGalleryitem.nodes.map(({ galleryimage }) => (
           <GalleryImage
-            key={galleryimage}
+            key={galleryimage.fluid.src}
             fluid={
               galleryimage.fluid
             }

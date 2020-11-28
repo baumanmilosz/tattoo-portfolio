@@ -25,6 +25,7 @@ const StyledParagraph = styled.p`
 `;
 
 const StyledAuthor = styled.p`
+  margin-top: 50px;
   text-align: right;
   font-size: 25px;
   font-weight: 700;

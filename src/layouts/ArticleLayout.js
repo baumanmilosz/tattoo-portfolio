@@ -7,33 +7,31 @@ const ArticleLayoutWrapper = styled.div`
 `;
 
 const ArticleHeaderWrapper = styled.div`
- flex-basis: 300px;
- height: 250px;
- position: relative;
- display: flex;
- justify-content: center;
- align-items: center;
- margin-right: 50px;
- background-image: ${({background}) => `url(${background})`};
- background-repeat: no-repeat;
- background-position: center;
+  flex-basis: 300px;
+  height: 250px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
+  background-image: ${({ background }) =>
+    `url(${background})`};
+  background-repeat: no-repeat;
+  background-position: center;
   color: #fff;
-  
 `;
 
 const ArticleDetailsHeading = styled.h2`
+  text-align: center;
+  margin-bottom: 20px;
   font-size: 30px;
   font-weight: 600;
-  margin-bottom: 20px;
- 
-  
 `;
 
 const ArticleDetailsReleaseDate = styled.span`
   position: absolute;
   top: 10px;
   left: 10px;
-  
 `;
 
 const StyledContent = styled.p`
@@ -46,6 +44,7 @@ export const query = graphql`
     datoCmsArticle(id: { eq: $id }) {
       heading
       content
+      releasedate
       image {
         fixed(width: 300) {
           src
@@ -57,17 +56,22 @@ export const query = graphql`
 
 const ArticleLayout = ({
   data: {
-    datoCmsArticle: { heading, content, image },
+    datoCmsArticle: { heading, content, image, releasedate },
   },
 }) => {
   return (
     <ArticleLayoutWrapper>
-      <ArticleHeaderWrapper background={image.fixed.src}>
-        <ArticleDetailsHeading>{heading}</ArticleDetailsHeading>
-        <ArticleDetailsReleaseDate>28.11.2020</ArticleDetailsReleaseDate>
+      <ArticleHeaderWrapper
+        background={image.fixed.src}
+      >
+        <ArticleDetailsHeading>
+          {heading}
+        </ArticleDetailsHeading>
+        <ArticleDetailsReleaseDate>
+          {releasedate}
+        </ArticleDetailsReleaseDate>
       </ArticleHeaderWrapper>
       <StyledContent>{content}</StyledContent>
-
     </ArticleLayoutWrapper>
   );
 };

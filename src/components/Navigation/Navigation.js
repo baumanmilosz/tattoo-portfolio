@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import { RouterPaths } from '../../constans/RouterPaths';
 
 const NavigationWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 100px;
@@ -16,10 +17,18 @@ const NavigationWrapper = styled.div`
 `;
 const PageLogo = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  font-size: 32px;
+  font-size: 35px;
   text-transform: uppercase;
   font-weight: 700;
+
+  span {
+    padding: 5px;
+    background-color: #000;
+    color: #fff;
+    font-size: 15px;
+  }
 `;
 
 const NavigationList = styled.ul`
@@ -38,14 +47,12 @@ const NavigationListItemLink = styled(Link)`
   padding: 5px 10px;
   background-color: #fff;
   color: #000;
-  &.active, &:hover {
+  &.active,
+  &:hover {
     background-color: #000;
     color: #fff;
   }
-
 `;
-
-
 
 const NavigationListItems = [
   {
@@ -70,13 +77,18 @@ const Navigation = () => {
   return (
     <NavigationWrapper>
       <Link to={RouterPaths.HOME}>
-        <PageLogo>APiejak</PageLogo>
+        <PageLogo>
+          <span>Amanda</span> Piejak
+        </PageLogo>
       </Link>
       <NavigationList>
         {NavigationListItems.map(
           ({ name, path }) => (
             <NavigationListItem key={path}>
-              <NavigationListItemLink to={path} activeClassName="active">
+              <NavigationListItemLink
+                to={path}
+                activeClassName="active"
+              >
                 {name}
               </NavigationListItemLink>
             </NavigationListItem>

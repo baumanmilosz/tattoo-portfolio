@@ -50,7 +50,6 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <HeroWrapper>
-        {console.log(data)}
         <InfoBoxWrapper>
           <h2>Tattoo artist</h2>
           <StyledLink to={RouterPaths.GALLERY}>show projects</StyledLink>
