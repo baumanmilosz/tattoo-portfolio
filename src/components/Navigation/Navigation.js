@@ -41,11 +41,11 @@ const NavigationListItem = styled.li`
   padding-left: 32px;
   font-size: 22px;
   font-weight: 600;
+ 
 `;
 
 const NavigationListItemLink = styled(Link)`
   padding: 5px 10px;
-  background-color: #fff;
   color: #000;
   &.active,
   &:hover {
